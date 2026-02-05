@@ -75,6 +75,9 @@ namespace :test do
     require_relative "test/isolation/abstract_unit"
     require "minitest/rails_plugin"
 
+    require "buildkite/test_collector"
+    Buildkite::TestCollector.configure(hook: :minitest)
+
     failing_files = []
 
     dirs = (ENV["TEST_DIR"] || ENV["TEST_DIRS"] || "**").split(",")
